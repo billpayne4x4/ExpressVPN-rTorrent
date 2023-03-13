@@ -9,8 +9,9 @@ ARG NUM
 ARG PLATFORM
 RUN useradd -ms /bin/bash rtorrent
 RUN echo 'rtorrent:password' | chpasswd
-COPY files/.rtorrent.rc /home/rtorrent
 COPY scripts/ /expressvpn/
+COPY files/.rtorrent.rc /home/rtorrent
+RUN chown rtorrent:rtorrent /home/rtorrent/.rtorrent.rc
 RUN echo 'deb http://deb.debian.org/debian/ bookworm universe' >> /etc/apt/sources.list.d/debian.sources
 RUN echo 'deb-src http://deb.debian.org/debian/ bookworm universe' >> /etc/apt/sources.list.d/debian.sources
 
