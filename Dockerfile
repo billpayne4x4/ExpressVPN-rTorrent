@@ -57,6 +57,10 @@ RUN sed -i 's/80/3000/' /etc/lighttpd/lighttpd.conf
 RUN pipx install cloudscraper --include-deps
 RUN cp -r /root/.local/pipx/venvs/cloudscraper /usr/local/lib/python*/dist-packages/
 
+RUN mkdir -p /dev/net
+RUN mknod /dev/net/tun c 10 200
+RUN chmod 0666 /dev/net/tun
+
 # Cleanup
 RUN rm -rf /rar
 RUN rm -rf /expressvpn/*.deb

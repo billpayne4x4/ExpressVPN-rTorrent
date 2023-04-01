@@ -6,7 +6,7 @@ IMAGE_NAME="expressvpn-rtorrent"
 echo "Building docker image..."
 
 docker buildx build --build-arg PLATFORM="amd64" \
-    --build-arg NUM="3.44.0.0" \
+    --build-arg NUM="3.46.0.7" \
     --platform linux/amd64 \
     --tag ${IMAGE_NAME} \
     -o type=docker \
